@@ -11,6 +11,7 @@ Thumbs.db
 
 # Build artifacts
 *.png
+!background-removed.png
 *.jpg
 *.log
 .env
