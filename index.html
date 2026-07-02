@@ -52,6 +52,13 @@
   --muted-2:#3a454f;
   --line:rgba(209,156,84,.4);
   --line-soft:rgba(209,156,84,.2);
+  --gold-600:#4a300a;
+  --gold-500:#5e3d0c;
+  --gold-400:#754d11;
+  --gold-300:#8f5e16;
+  --gold-200:#a8701c;
+  --gold-grad:linear-gradient(135deg,#5e3d0c 0%,#8f5e16 26%,#a8701c 52%,#c59232 66%,#8f5e16 82%,#5e3d0c 100%);
+  --gold-grad-v:linear-gradient(180deg,#c59232,#8f5e16 30%,#5e3d0c 70%,#3d2605);
   color-scheme: light;
 }
 
@@ -491,19 +498,6 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
   border-color: rgba(209,156,84,0.3);
   box-shadow: 0 20px 50px -24px rgba(0,0,0,0.08);
 }
-/* -- Gold text readability in light mode -- */
-[data-theme="light"] .gold-text {
-  background: linear-gradient(135deg, #7a5212 0%, #9e6b1f 26%, #b8862f 52%, #c9973d 66%, #9e6b1f 82%, #7a5212 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-[data-theme="light"] .stat .num {
-  background: linear-gradient(135deg, #7a5212, #9e6b1f, #b8862f, #9e6b1f);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-[data-theme="light"] .eyebrow { color: #9e6b1f; }
-[data-theme="light"] .addr .k { color: #9e6b1f; }
-[data-theme="light"] .field label { color: #9e6b1f; }
-[data-theme="light"] .foot-col h6 { color: #9e6b1f; }
 /* -- Vision card -- */
 [data-theme="light"] .vision-card {
   background: linear-gradient(150deg, rgba(255,255,255,0.95), rgba(240,245,250,0.85));
