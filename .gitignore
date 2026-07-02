@@ -1,0 +1,32 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.png
+!background-removed.png
+*.jpg
+*.log
+.env
+.env.local
+
+# Dependencies (if any)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.tmp
+*.bak
+screenshot.js
+mcp-executor.js
+build.py
+check.js
+verify.py
