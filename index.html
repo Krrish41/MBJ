@@ -1126,7 +1126,6 @@ document.querySelectorAll('.d3').forEach(el=>io.observe(el));
 
 /* ================= NAV + PROGRESS + PARALLAX ================= */
 const nav=document.getElementById('nav'),prog=document.getElementById('progress');
-const depthEls=[...document.querySelectorAll('[data-depth]')];
 let sy=window.scrollY,ticking=false;
 function onScroll(){
   sy=window.scrollY;
@@ -1137,11 +1136,7 @@ function update(){
   const h=document.documentElement.scrollHeight-innerHeight;
   prog.style.width=(sy/h*100)+'%';
   if(!reduce){
-    // hero layered depth parallax
-    for(const el of depthEls){
-      const op = Math.max(0, 1 - (sy / 450));
-      el.style.opacity=op;
-    }
+    // previously parallax loop
   }
   ticking=false;
 }
