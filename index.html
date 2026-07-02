@@ -279,7 +279,7 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
   background:linear-gradient(155deg,rgba(15,51,80,.42),rgba(7,26,41,.5));border:1px solid var(--line);
   transform-style:preserve-3d;box-shadow:var(--shadow-deep)}
 .leader .mono{position:absolute;right:26px;top:16px;font-family:var(--serif);font-size:6rem;line-height:1;
-  color:rgba(244,206,123,.08);pointer-events:none}
+  color:rgba(244,206,123,.18);pointer-events:none}
 .leader h3{font-size:1.8rem;color:var(--cream)}
 .leader .role{font-family:var(--caps);letter-spacing:.16em;font-size:.72rem;text-transform:uppercase;
   color:var(--gold-300);margin-top:10px}
@@ -409,10 +409,21 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
 .field input:focus,.field select:focus,.field textarea:focus,
 .field input:hover,.field select:hover,.field textarea:hover{border-color:var(--gold-400);
   box-shadow:0 0 0 3px rgba(209,156,84,.14);background:rgba(4,15,25,.75)}
-.field select{appearance:none;cursor:pointer;
-  background-image:linear-gradient(45deg,transparent 50%,var(--gold-400) 50%),linear-gradient(135deg,var(--gold-400) 50%,transparent 50%);
-  background-position:calc(100% - 20px) center,calc(100% - 15px) center;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
-.field select option{color:#0a2338;background:#f7f0e0}
+.custom-select{position:relative;width:100%;user-select:none}
+.cs-selected{width:100%;background:rgba(4,15,25,.55);border:1px solid var(--line-soft);
+  border-radius:11px;padding:13px 15px;color:var(--cream);font-family:var(--sans);font-size:.95rem;transition:.3s;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center}
+.cs-selected:hover, .cs-selected.active{border-color:var(--gold-400);box-shadow:0 0 0 3px rgba(209,156,84,.14);background:rgba(4,15,25,.75)}
+.cs-selected::after{content:"";width:6px;height:6px;border-right:2px solid var(--gold-400);border-bottom:2px solid var(--gold-400);
+  transform:rotate(45deg);transition:.3s;margin-right:6px}
+.cs-selected.active::after{transform:rotate(-135deg)}
+.cs-options{position:absolute;top:calc(100% + 6px);left:0;right:0;background:rgba(8,24,38,.96);backdrop-filter:blur(12px);
+  border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-deep);z-index:100;
+  max-height:220px;overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-10px);transition:.3s}
+.cs-options.open{opacity:1;visibility:visible;transform:translateY(0)}
+.cs-option{padding:12px 15px;color:var(--cream-dim);cursor:pointer;transition:.2s;border-bottom:1px solid rgba(255,255,255,.04);font-family:var(--sans);font-size:.95rem}
+.cs-option:last-child{border-bottom:none}
+.cs-option:hover{background:rgba(209,156,84,.12);color:var(--gold-200)}
 .form-card .btn-gold{width:100%;justify-content:center;margin-top:8px}
 .form-note{text-align:center;color:var(--muted-2);font-size:.8rem;margin-top:14px}
 
@@ -620,6 +631,7 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
   background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(240,245,250,0.85));
   border-color: rgba(209,156,84,0.3);
 }
+[data-theme="light"] .leader .mono { color: rgba(209,156,84,0.15); }
 [data-theme="light"] .about-copy p strong { color: #1f2a36; }
 </style>
 </head>
@@ -915,13 +927,17 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
         </div>
         <div class="f-row">
           <div class="field"><label>Product of Interest</label>
-            <select name="product">
-              <option>Maida (Refined Flour)</option><option>Chakki Atta / Whole Wheat</option>
-              <option>Semolina (Sooji / Rawa)</option><option>Tandoori Atta</option>
-              <option>Wheat Bran</option><option>Besan (Gram Flour)</option>
-              <option>Chana Dal</option><option>Rice (Basmati / Non-Basmati)</option>
-              <option>Sugar</option><option>Other Agro Commodities</option>
-            </select>
+            <div class="custom-select" id="customProductSelect">
+              <div class="cs-selected">Maida (Refined Flour)</div>
+              <div class="cs-options">
+                <div class="cs-option">Maida (Refined Flour)</div><div class="cs-option">Chakki Atta / Whole Wheat</div>
+                <div class="cs-option">Semolina (Sooji / Rawa)</div><div class="cs-option">Tandoori Atta</div>
+                <div class="cs-option">Wheat Bran</div><div class="cs-option">Besan (Gram Flour)</div>
+                <div class="cs-option">Chana Dal</div><div class="cs-option">Rice (Basmati / Non-Basmati)</div>
+                <div class="cs-option">Sugar</div><div class="cs-option">Other Agro Commodities</div>
+              </div>
+              <input type="hidden" name="product" id="hiddenProductInput" value="Maida (Refined Flour)">
+            </div>
           </div>
           <div class="field"><label>Country of Destination</label><input name="country" placeholder="Destination"></div>
         </div>
@@ -1374,6 +1390,20 @@ function handleSubmit(e){
     requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
+}
+
+/* custom select logic */
+const csSelect=document.getElementById('customProductSelect');
+if(csSelect){
+  const sel=csSelect.querySelector('.cs-selected'), opts=csSelect.querySelector('.cs-options'), inp=document.getElementById('hiddenProductInput');
+  sel.addEventListener('click',e=>{e.stopPropagation();sel.classList.toggle('active');opts.classList.toggle('open')});
+  opts.querySelectorAll('.cs-option').forEach(o=>{
+    o.addEventListener('click',()=>{
+      sel.textContent=o.textContent; inp.value=o.textContent;
+      sel.classList.remove('active'); opts.classList.remove('open');
+    });
+  });
+  document.addEventListener('click',()=>{sel.classList.remove('active');opts.classList.remove('open')});
 })();
 </script>
 </body>
