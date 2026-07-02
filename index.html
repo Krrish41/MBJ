@@ -511,13 +511,18 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
               repeating-radial-gradient(circle at 50% 18%, rgba(209,156,84,0.15) 0 1px, transparent 1px 30px),
               linear-gradient(160deg, #ffffff, #edf1f5);
 }
-/* -- Cards (stat, group, value, feature, process, why) -- */
+/* -- Cards (stat, group, value, feature, process, why, co, ach, combined, prod, pack-note) -- */
 [data-theme="light"] .stat-grid,
 [data-theme="light"] .grp-card,
 [data-theme="light"] .value-card,
 [data-theme="light"] .feature,
 [data-theme="light"] .process-card,
-[data-theme="light"] .why {
+[data-theme="light"] .why,
+[data-theme="light"] .co,
+[data-theme="light"] .ach,
+[data-theme="light"] .combined,
+[data-theme="light"] .prod,
+[data-theme="light"] .pack-note {
   background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(240,245,250,0.85));
   border-color: rgba(209,156,84,0.3);
   box-shadow: 0 4px 20px -8px rgba(0,0,0,0.06);
@@ -1317,7 +1322,9 @@ function handleSubmit(e){
       const lift=0.28*Math.hypot(a.x-b.x,a.y-b.y);
       ctx.beginPath();ctx.moveTo(a.x,a.y);
       ctx.quadraticCurveTo(mx,my-lift,b.x,b.y);
-      ctx.strokeStyle='rgba(244,206,123,0.28)';ctx.lineWidth=1*DPR;ctx.stroke();
+      const isLight = document.body.getAttribute('data-theme') === 'light';
+      ctx.strokeStyle=isLight ? 'rgba(168,112,28,0.4)' : 'rgba(244,206,123,0.28)';
+      ctx.lineWidth=1*DPR;ctx.stroke();
     }
     const now=performance.now();
     for(const m of proj){
