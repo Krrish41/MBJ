@@ -1136,7 +1136,13 @@ function update(){
   const h=document.documentElement.scrollHeight-innerHeight;
   prog.style.width=(sy/h*100)+'%';
   if(!reduce){
-    // previously parallax loop
+    const hCopy = document.querySelector('.hero-copy');
+    if (hCopy) {
+      const op = Math.max(0.15, 1 - (sy / 550));
+      const y = sy * -0.25;
+      hCopy.style.transform = `translate3d(0, ${y}px, 0)`;
+      hCopy.style.opacity = op;
+    }
   }
   ticking=false;
 }
