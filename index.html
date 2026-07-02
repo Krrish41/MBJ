@@ -124,7 +124,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spa
 .divider i{display:block;height:1px;width:120px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
 .divider svg{width:16px;height:16px;filter:drop-shadow(0 0 6px rgba(244,206,123,.5))}
 
-/* ============================== PERSPECTIVE STAGE ============================== */
+/* ============================== LAYOUT & PERSPECTIVE STAGE ============================== */
+.wrap{width:min(1300px,95vw);margin:0 auto}
 .stage{perspective:1400px;perspective-origin:50% 42%}
 /* generic scroll reveal with real Z depth */
 .d3{opacity:0;transform:translate3d(0,60px,-260px) rotateX(12deg);
@@ -174,7 +175,8 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .btn{position:relative;font-family:var(--caps);font-weight:600;font-size:.78rem;letter-spacing:.13em;
   text-transform:uppercase;text-decoration:none;padding:16px 30px;border-radius:12px;cursor:pointer;
-  transition:transform .35s var(--ease),box-shadow .35s;display:inline-flex;align-items:center;gap:10px;border:0}
+  transition:transform .35s var(--ease),box-shadow .35s;display:inline-flex;align-items:center;gap:10px;border:0;
+  overflow:hidden}
 .btn-gold{color:var(--navy-900);background:var(--gold-grad);
   box-shadow:0 16px 40px -12px rgba(209,156,84,.65),inset 0 1px 0 rgba(255,255,255,.4)}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 24px 54px -14px rgba(244,206,123,.8)}
@@ -294,10 +296,11 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
 .co{position:relative;padding:24px 22px;border-radius:14px;transform-style:preserve-3d;
   background:linear-gradient(160deg,rgba(15,51,80,.34),rgba(7,26,41,.44));border:1px solid var(--line-soft);
   transition:border-color .4s;overflow:hidden}
-.co::after{content:"";position:absolute;inset:0;border-radius:14px;opacity:0;transition:opacity .4s;
-  background:radial-gradient(200px 140px at var(--mx,50%) var(--my,0%),rgba(244,206,123,.16),transparent 60%)}
+.co::after, .glow-track::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .4s;
+  background:radial-gradient(180px 180px at var(--mx,50%) var(--my,0%),rgba(244,206,123,.22),transparent 65%);
+  pointer-events:none;z-index:2}
+.co:hover::after, .glow-track:hover::after{opacity:1}
 .co:hover{border-color:var(--line)}
-.co:hover::after{opacity:1}
 .co .co-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;transform:translateZ(24px)}
 .co h5{font-family:var(--serif);font-size:1.32rem;font-weight:600;color:var(--cream);line-height:1.15}
 .co .loc{color:var(--muted);font-size:.85rem;margin-top:8px;transform:translateZ(18px);display:flex;align-items:center;gap:7px}
@@ -343,7 +346,7 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .why{position:relative;padding:28px 24px;border-radius:16px;transform-style:preserve-3d;
   background:linear-gradient(160deg,rgba(15,51,80,.34),rgba(7,26,41,.42));border:1px solid var(--line-soft);
-  transition:transform .5s var(--ease),border-color .4s}
+  transition:transform .5s var(--ease),border-color .4s;overflow:hidden}
 .why:hover{transform:translateY(-8px);border-color:var(--line)}
 .why .ic{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
   background:linear-gradient(150deg,rgba(244,206,123,.16),rgba(181,137,0,.06));border:1px solid var(--line)}
@@ -365,14 +368,14 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
 .region:hover{border-color:var(--gold-400);color:var(--gold-200);transform:translateY(-2px)}
 .offices{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
 .office{padding:18px 20px;border-radius:13px;border:1px solid var(--line-soft);background:rgba(15,51,80,.3);
-  transform-style:preserve-3d;transition:.4s}
+  transform-style:preserve-3d;transition:.4s;position:relative;overflow:hidden}
 .office:hover{border-color:var(--line);transform:translateY(-4px)}
 .office .c{font-family:var(--serif);font-size:1.4rem;color:var(--cream)}
 .office .city{font-family:var(--caps);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-300);margin-top:4px}
 
 /* achievements */
 .ach-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:60px}
-.ach{padding:26px 24px;border-radius:15px;border:1px solid var(--line-soft);
+.ach{padding:26px 24px;border-radius:15px;border:1px solid var(--line-soft);position:relative;overflow:hidden;
   background:linear-gradient(160deg,rgba(15,51,80,.3),rgba(7,26,41,.4));display:flex;gap:16px;align-items:flex-start}
 .ach svg{width:26px;height:26px;color:var(--gold-300);flex:none;margin-top:2px}
 .ach p{font-size:.96rem;color:var(--cream-dim);line-height:1.4}
@@ -392,7 +395,7 @@ header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s va
 .cl small{display:block;font-family:var(--caps);letter-spacing:.16em;text-transform:uppercase;font-size:.6rem;color:var(--muted-2)}
 .cl b{font-weight:600;font-size:1.05rem}
 
-.form-card{padding:38px;border-radius:22px;border:1px solid var(--line);
+.form-card{padding:38px;border-radius:22px;border:1px solid var(--line);position:relative;overflow:hidden;
   background:linear-gradient(160deg,rgba(15,51,80,.44),rgba(7,26,41,.55));box-shadow:var(--shadow-deep)}
 .form-card h3{font-size:1.9rem;margin-bottom:6px}
 .form-card>p{color:var(--muted);margin-bottom:26px;font-size:.98rem}
@@ -674,9 +677,9 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
         </h1>
         <p class="hero-sub" data-depth="12">A trusted international trading partner delivering premium <b>wheat products, food grains, pulses &amp; agro commodities</b> — sourced with care, processed with excellence, delivered with complete reliability worldwide.</p>
         <div class="hero-cta" data-depth="8">
-          <a href="#products" class="btn btn-gold">Explore Our Products
+          <a href="#products" class="btn btn-gold glow-track">Explore Our Products
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="#about" class="btn btn-ghost">Our Story</a>
+          <a href="#about" class="btn btn-ghost glow-track">Our Story</a>
         </div>
       </div>
 
@@ -840,10 +843,10 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
         </div>
         <span class="eyebrow" style="margin-bottom:16px">Our Global Offices</span>
         <div class="offices">
-          <div class="office tilt" data-tilt="8"><div class="c">India</div><div class="city">Mumbai · HQ</div></div>
-          <div class="office tilt" data-tilt="8"><div class="c">UAE</div><div class="city">Dubai</div></div>
-          <div class="office tilt" data-tilt="8"><div class="c">United Kingdom</div><div class="city">London</div></div>
-          <div class="office tilt" data-tilt="8"><div class="c">Singapore</div><div class="city">Singapore</div></div>
+          <div class="office glow-track tilt" data-tilt="8"><div class="c">India</div><div class="city">Mumbai · HQ</div></div>
+          <div class="office glow-track tilt" data-tilt="8"><div class="c">UAE</div><div class="city">Dubai</div></div>
+          <div class="office glow-track tilt" data-tilt="8"><div class="c">United Kingdom</div><div class="city">London</div></div>
+          <div class="office glow-track tilt" data-tilt="8"><div class="c">Singapore</div><div class="city">Singapore</div></div>
         </div>
       </div>
     </div>
@@ -895,7 +898,7 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
         </div>
       </div>
 
-      <form class="form-card d3 delay1" id="inquiry" onsubmit="return handleSubmit(event)">
+      <form class="form-card glow-track d3 delay1" id="inquiry" onsubmit="return handleSubmit(event)">
         <h3>Send us your inquiry</h3>
         <p>Tell us what you need — product, volume and destination — and our trade desk will get back within 24 business hours.</p>
         <div class="f-row">
@@ -1069,7 +1072,7 @@ const why=[
  ["Proven Reliability","Part of the financially strong, diversified Shantiratan Empire — a legacy of trust since 2007."]
 ];
 document.getElementById('whyGrid').innerHTML=why.map((w,i)=>`
-  <div class="why d3">
+  <div class="why glow-track d3">
     <div class="ic">${whyIco[i]}</div>
     <h5>${w[0]}</h5><p>${w[1]}</p>
   </div>`).join('');
@@ -1084,7 +1087,7 @@ const ach=[
  "Strong focus on value addition & sustainability",
 ];
 document.getElementById('achStrip').innerHTML=ach.map(a=>`
-  <div class="ach d3">${achIco}<p>${a}</p></div>`).join('');
+  <div class="ach glow-track d3">${achIco}<p>${a}</p></div>`).join('');
 
 document.getElementById('yr').textContent=new Date().getFullYear();
 
@@ -1154,29 +1157,34 @@ function animateCount(el){
   requestAnimationFrame(step);
 }
 
-/* ================= 3D TILT CARDS ================= */
-if(!matchMedia('(hover:none)').matches && !reduce){
-  document.addEventListener('pointermove',handleTilt);
+/* ================= 3D TILT CARDS & GLOW TRACKING ================= */
+function resetTilt(c){
+  c.style.transition='transform .5s cubic-bezier(.22,.61,.36,1)';
+  c.style.transform='';
+  c.classList.remove('active');
 }
 function handleTilt(e){
-  const card=e.target.closest('.tilt');
-  document.querySelectorAll('.tilt.active').forEach(c=>{if(c!==card)resetTilt(c)});
+  const card=e.target.closest('.tilt, .glow-track');
+  document.querySelectorAll('.tilt.active, .glow-track.active').forEach(c=>{if(c!==card)resetTilt(c)});
   if(!card)return;
   const r=card.getBoundingClientRect();
   const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
-  const max=parseFloat(card.dataset.tilt||6);
-  const rx=(.5-py)*max, ry=(px-.5)*max;
-  card.style.transition='transform .08s linear';
-  card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+  
+  if(card.classList.contains('tilt')){
+    const max=parseFloat(card.dataset.tilt||6);
+    const rx=(.5-py)*max, ry=(px-.5)*max;
+    card.style.transition='transform .08s linear';
+    card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+  }
+  
   card.style.setProperty('--mx',(px*100)+'%');
   card.style.setProperty('--my',(py*100)+'%');
   card.classList.add('active');
 }
-function resetTilt(c){
-  c.style.transition='transform .5s cubic-bezier(.22,.61,.36,1)';
-  c.style.transform='';c.classList.remove('active');
+if(!matchMedia('(hover:none)').matches && !reduce){
+  document.addEventListener('pointermove',handleTilt);
+  document.addEventListener('pointerleave',()=>document.querySelectorAll('.tilt.active, .glow-track.active').forEach(resetTilt));
 }
-document.addEventListener('pointerleave',()=>document.querySelectorAll('.tilt.active').forEach(resetTilt));
 
 /* ================= MOBILE MENU ================= */
 const mm=document.getElementById('mobileMenu');
