@@ -125,7 +125,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spa
 .divider svg{width:16px;height:16px;filter:drop-shadow(0 0 6px rgba(244,206,123,.5))}
 
 /* ============================== LAYOUT & PERSPECTIVE STAGE ============================== */
-.wrap{max-width:1300px;width:95vw;margin:0 auto}
+.wrap{width:100%;max-width:1300px;margin:0 auto;padding:0 24px;box-sizing:border-box}
 .stage{perspective:1400px;perspective-origin:50% 42%}
 /* generic scroll reveal with real Z depth */
 .d3{opacity:0;transform:translate3d(0,60px,-260px) rotateX(12deg);
@@ -461,7 +461,8 @@ footer{position:relative;padding:80px 0 40px;border-top:1px solid var(--line-sof
 
 /* ============================== RESPONSIVE ============================== */
 @media(max-width:980px){
-  .nav-links,.nav-cta{display:none}
+  .nav-links,.nav-cta,.nav-actions .btn{display:none}
+  .leader .mono{font-size:4rem;top:12px;right:20px}
   .burger{display:flex}
   .hero-grid{grid-template-columns:1fr;gap:10px}
   .hero-emblem{grid-row:1;min-height:220px;margin-bottom:10px}
@@ -1035,7 +1036,7 @@ function coCard(o,tilt){
   const chip=o.c?`<span class="cap-chip">${o.c}</span>`:'';
   const loc=o.l?`<div class="loc">${pinSvg}${o.l}</div>`:'';
   const desc=o.d?`<div class="desc">${o.d}</div>`:'';
-  return `<div class="co tilt d3" data-tilt="${tilt}">
+  return `<div class="co tilt d3 delay1" data-tilt="${tilt}">
     <div class="co-h"><h5>${o.n}</h5>${chip}</div>${loc}${desc}</div>`;
 }
 document.getElementById('millGrid').innerHTML=mills.map(o=>coCard(o,7)).join('');
@@ -1063,7 +1064,7 @@ const products=[
   {n:"Agro Commodities",t:"& more, on request",i:grainIc},
 ];
 document.getElementById('prodGrid').innerHTML=products.map((p,idx)=>`
-  <div class="prod tilt d3" data-tilt="9">
+  <div class="prod tilt d3 delay${(idx%3)+1}" data-tilt="9">
     <span class="idx">${String(idx+1).padStart(2,'0')}</span>
     <div class="glow"></div>
     <div class="pic">${p.i}</div>
@@ -1138,10 +1139,7 @@ function update(){
   if(!reduce){
     // hero layered depth parallax
     for(const el of depthEls){
-      const d=parseFloat(el.dataset.depth);
-      const y = sy * d * -0.01;
       const op = Math.max(0, 1 - (sy / 450));
-      el.style.transform=`translate3d(0,${y}px,0)`;
       el.style.opacity=op;
     }
   }
@@ -1404,7 +1402,7 @@ if(csSelect){
     });
   });
   document.addEventListener('click',()=>{sel.classList.remove('active');opts.classList.remove('open')});
-})();
+}
 </script>
 </body>
 </html>
