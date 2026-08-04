@@ -1,68 +1,71 @@
 # MBJ Global — Premium Agro Trading Website
 
-A stunning, **fully 3D scrolling website** for **MBJ Global Pvt. Ltd.** — the global trading arm of Shantiratan Empire. Built with vanilla JavaScript, WebGL canvas, and cutting-edge scroll-driven animations.
+A fully 3D scrolling website for MBJ Global Pvt. Ltd., the global trading arm of Shantiratan Empire. Built with vanilla JavaScript, WebGL canvas, and scroll-driven animations.
 
 🌐 **[Visit Live Website](https://krrish41.github.io/MBJ/)** — Hosted on GitHub Pages
 
-![Hero Screenshot](https://img.shields.io/badge/3D%20Depth%20Effects-Custom%20Canvas-gold)
-![Navy & Gold](https://img.shields.io/badge/Design-Navy%20%2B%20Gold%20Luxury-0C2B40)
-![Self-Contained](https://img.shields.io/badge/Delivery-Single%20HTML%20File-blue)
-
 ---
 
-## 🌾 Features
+## What This Does
 
-### **The Signature 3D Depth Field**
-- **Golden wheat-grain particle system** that parallaxes past you as you scroll
-- ~150 individually layered depth-motes with velocity, scale, and brightness based on Z-position
-- Closer grains appear bigger, brighter, and move faster — creating genuine depth perception
-- Uses HTML5 Canvas for performant rendering
+The signature feature is a 3D depth field — golden wheat-grain particles that parallax as you scroll. About 150 individually layered depth-motes, each with velocity, scale, and brightness based on Z-position. Closer grains appear bigger, brighter, and move faster, creating genuine depth perception. All rendered on HTML5 Canvas for performance.
 
-### **Layered 3D Hero Section**
-- **Floating S-globe emblem** with orbiting rings and pulsing halo
+### 3D Hero Section
+
+- Floating S-globe emblem with orbiting rings and pulsing halo
 - Mouse-tracking 3D rotation (perspective tilts toward cursor)
 - Animated floating effect with easing
 - Parallax headline text at 3 different depth layers
 
-### **Interactive 3D Elements**
-- **Tilt cards** on hover — company cards, product cards, office cards rotate in perspective
-- **Cursor-tracking glare effect** that follows your mouse movement
+### Interactive 3D Elements
+
+- Tilt cards on hover — company cards, product cards, office cards rotate in perspective
+- Cursor-tracking glare effect that follows mouse movement
 - Real 3D transforms with `translate3d()` and `rotateX/Y`
 - Smooth reveal animations with Z-depth on scroll
 
-### **Rotating 3D Globe**
-- **Canvas-rendered sphere** with dotted lat/lon grid
-- **Pulsing golden markers** on Mumbai, Dubai, London, Singapore
-- **Animated trade route arcs** connecting offices
+### Rotating 3D Globe
+
+- Canvas-rendered sphere with dotted lat/lon grid
+- Pulsing golden markers on Mumbai, Dubai, London, Singapore
+- Animated trade route arcs connecting offices
 - Continuous rotation with adjustable tilt
 - Ambient glow and lighting effects
 
-### **Scroll-Driven Animation**
+### Scroll-Driven Animation
+
 - Parallax layering: depth parallax on hero elements as you scroll
 - Intersection Observer reveals with 3D transforms (`translateZ(-260px)`)
 - Staggered reveal delays across sections
 - Progress bar at top of page
 
-### **Typeface & Design**
-- **Cormorant Garamond** (serif display) — elegant, high-contrast headlines
-- **Cinzel** (engraved caps) — luxe section labels echoing the logo
-- **Manrope** (humanist sans) — clean, readable body text
-- Consistent letterspacing and type scale
+---
 
-### **Brand Palette**
-- **Deep Navy**: `#0C2B40` (primary background)
-- **Rich Gold Gradient**: `#D19C54` → `#FFE8B0` (accents, hover states, text highlights)
-- **Cream**: `#F7F0E0` (body text)
-- **Subtle Lines**: Gold with 22% opacity for dividers and borders
+## Design
 
-### **Interaction Patterns**
+**Typefaces:**
+- Cormorant Garamond (serif display) — elegant, high-contrast headlines
+- Cinzel (engraved caps) — luxe section labels echoing the logo
+- Manrope (humanist sans) — clean, readable body text
+
+**Colors:**
+- Deep Navy: `#0C2B40` (primary background)
+- Rich Gold Gradient: `#D19C54` → `#FFE8B0` (accents, hover states, text highlights)
+- Cream: `#F7F0E0` (body text)
+- Subtle Lines: Gold with 22% opacity for dividers and borders
+
+### Interaction Patterns
+
 - Smooth scroll behavior (native CSS)
 - Button hover lifts with shadow depth
 - Form focus states with glow rings
 - Marquee scroll of product names (pause on hover)
 - Mobile hamburger menu with smooth transitions
 
-### **Content Sections**
+---
+
+## Content Sections
+
 1. **Hero** — Headline, subheading, CTA buttons, stat row
 2. **Marquee** — Looping product names with gold separators
 3. **About** — Company story, vision, tilt card with emblem
@@ -75,15 +78,21 @@ A stunning, **fully 3D scrolling website** for **MBJ Global Pvt. Ltd.** — the 
 10. **Contact** — Full contact form, address list, email/phone links
 11. **Footer** — Full nav, global offices strip, social/web links
 
-### **Responsive Design**
+---
+
+## Responsive Design
+
 - Mobile-first approach
 - Hamburger menu for navigation on mobile
 - Touch-friendly form inputs
 - Optimized canvas sizing for all screen sizes
 - Reduced motion support (respects `prefers-reduced-motion`)
 
-### **Performance**
-- **Single self-contained HTML file** (~1 MB with embedded assets)
+---
+
+## Performance
+
+- Single self-contained HTML file (~1 MB with embedded assets)
 - No external dependencies (fonts via Google Fonts CDN only)
 - Embedded base64 logo images (lockup + emblem)
 - Optimized canvas rendering with requestAnimationFrame
@@ -91,7 +100,7 @@ A stunning, **fully 3D scrolling website** for **MBJ Global Pvt. Ltd.** — the 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Option 1: Local File
 1. Download `index.html`
@@ -109,7 +118,7 @@ A stunning, **fully 3D scrolling website** for **MBJ Global Pvt. Ltd.** — the 
 
 ---
 
-## 📐 File Structure
+## File Structure
 
 ```
 mbj-global-website/
@@ -122,7 +131,7 @@ mbj-global-website/
 
 ---
 
-## 🛠 Customization
+## Customization
 
 ### Edit Content
 All text content is hardcoded in the HTML. Open `index.html` in your editor and search for:
@@ -164,9 +173,9 @@ Currently the inquiry form shows a success message but doesn't send data. To con
 
 ---
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
-This site is built on three core principles:
+Three core principles:
 
 1. **Signature 3D Depth** — The golden grain field isn't decoration; it's the visual thesis. It grounds the brand in agriculture while the parallax effect creates genuine spatial depth.
 
@@ -176,7 +185,7 @@ This site is built on three core principles:
 
 ---
 
-## 📱 Browser Support
+## Browser Support
 
 - ✅ Chrome/Edge 90+
 - ✅ Firefox 88+
@@ -187,7 +196,7 @@ This site is built on three core principles:
 
 ---
 
-## 🔧 Technical Stack
+## Technical Stack
 
 - **HTML5** — Semantic structure
 - **CSS3** — Custom properties, gradients, transforms, animations, grid/flexbox
@@ -199,7 +208,7 @@ This site is built on three core principles:
 
 ---
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 - **Page Load**: < 500ms (single 1MB file)
 - **Paint Time**: ~ 200ms (optimized canvas rendering)
@@ -209,7 +218,7 @@ This site is built on three core principles:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! To add features or fix bugs:
 
@@ -222,9 +231,9 @@ Contributions welcome! To add features or fix bugs:
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the **MIT License** — see LICENSE file for details.
+MIT License — see LICENSE file for details.
 
 You're free to:
 - Use commercially
@@ -236,7 +245,7 @@ Just include the original license and copyright notice.
 
 ---
 
-## 📞 Contact & Support
+## Contact & Support
 
 **MBJ Global Pvt. Ltd.**
 - **Email**: info@mbjglobal.net
@@ -248,7 +257,7 @@ For website issues or feature requests, create an issue on GitHub.
 
 ---
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
 Potential additions (not yet implemented):
 - [ ] Backend form submission (email notifications)
@@ -263,7 +272,7 @@ Potential additions (not yet implemented):
 
 ---
 
-## 🏆 Credits
+## Credits
 
 **Built with:**
 - Design inspiration from MBJ Global brand identity
