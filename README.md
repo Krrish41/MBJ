@@ -2,7 +2,7 @@
 
 A fully 3D scrolling website for MBJ Global Pvt. Ltd., the global trading arm of Shantiratan Empire. Built with vanilla JavaScript, WebGL canvas, and scroll-driven animations.
 
-🌐 **[Visit Live Website](https://krrish41.github.io/MBJ/)** — Hosted on GitHub Pages
+**[Visit Live Website](https://krrish41.github.io/MBJ/)** — Hosted on GitHub Pages
 
 ---
 
